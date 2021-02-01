@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix='e!', case_insensitive=True)
 async def on_ready():
     print(bot.user.name+' activated')
 
-@bot.command(aliases=['trigger'], description='**TRIGGERED**', usage='Нет')
+@bot.command(aliases=['trigger'], description='UNLEASH THE EVIL', usage='[user(opt.)]')
 async def triggered(ctx, member:discord.Member = None):
     if not member:
         member = ctx.author
@@ -40,7 +40,7 @@ async def triggered(ctx, member:discord.Member = None):
     from os import remove
     remove(f'triggered{ctx.author.id}.gif')
 
-@bot.command(aliases=['waste'], description='Mission failed, we\'ll get \'em next time!')
+@bot.command(aliases=['waste'], description='Mission failed, we\'ll get \'em next time!', usage='[user(opt.)]')
 async def wasted(ctx, member:discord.Member = None):
     if not member:
         member = ctx.author
@@ -63,7 +63,7 @@ async def wasted(ctx, member:discord.Member = None):
 
     await ctx.send(embed=emb)
 
-@bot.command(aliases=['patting'], description='**Погладь меня** OwO')
+@bot.command(aliases=['patting'], description='**Pat me** OwO', usage='[user(opt.)]')
 async def pat(ctx, member:discord.Member = None):
     import requests
     if not member:
@@ -71,14 +71,14 @@ async def pat(ctx, member:discord.Member = None):
 
     rsp = requests.get('https://some-random-api.ml/animu/pat')
     emb = discord.Embed(title='',
-    description=f'**{ctx.author.mention} гладит {member.mention if member != ctx.author else "себя"}**',
+    description=f'**{ctx.author.mention} pats {member.mention if member != ctx.author else "themselves"}**',
     colour=discord.Colour.gold()
     )
     emb.set_image(url=rsp.json()['link'])
 
     await ctx.send(embed=emb)
 
-@bot.command(aliases=['winking'], description='Подмигивает пользователю ;)')
+@bot.command(aliases=['winking'], description='Winks to someone ;)', usage='[user(opt.)]')
 async def wink(ctx, member:discord.Member = None):
     import requests
     if not member:
@@ -86,14 +86,14 @@ async def wink(ctx, member:discord.Member = None):
 
     rsp = requests.get('https://some-random-api.ml/animu/wink')
     emb = discord.Embed(title='',
-    description=f'**{ctx.author.mention} подмигивает {member.mention if member != ctx.author else "себе"}**',
+    description=f'**{ctx.author.mention} winks to {member.mention if member != ctx.author else "themselves"}**',
     colour=discord.Colour.gold()
     )
     emb.set_image(url=rsp.json()['link'])
 
     await ctx.send(embed=emb)
 
-@bot.command(aliases=['hugging'], description='Обнимает пользователя :D')
+@bot.command(aliases=['hugging'], description='Hugs someone :D', usage='[user(opt.)]')
 async def hug(ctx, member:discord.Member = None):
     import requests
     if not member:
@@ -101,23 +101,23 @@ async def hug(ctx, member:discord.Member = None):
 
     rsp = requests.get('https://some-random-api.ml/animu/hug')
     emb = discord.Embed(title='',
-    description=f'**{ctx.author.mention} обнял {member.mention if member != ctx.author else "себя"}**',
+    description=f'**{ctx.author.mention} hugs {member.mention if member != ctx.author else "themselves"}**',
     colour=discord.Colour.gold()
     )
     emb.set_image(url=rsp.json()['link'])
 
     await ctx.send(embed=emb)
 
-@bot.command(aliases=['wtf'], description='Покажи всем, насколько тебе кринжово')
+@bot.command(aliases=['wtf'], description='Show everyone your cringe', usage='Empty')
 async def facepalm(ctx):
     import requests
     from random import choice
 
     sentence = choice([
-        'умирает внутри',
-        'теряет веру в человечество',
-        'бьёт себя по головое стулом',
-        'деградирует от человечества'
+        'is dead inside',
+        'loses hope in humanity',
+        'hits themselves with a chair',
+        'is cringing'
     ])
     rsp = requests.get('https://some-random-api.ml/animu/face-palm')
     emb = discord.Embed(title='',
